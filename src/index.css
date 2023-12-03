@@ -1,13 +1,17 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* style the button in the whole app */
+/* add @layer */
+/* 특정 HTML요소에 대해 기본 스타일을 적용하고 싶다면, `base` 레이어에 그 스타일들을 추가하기 위해서 @layer지시자를 사용한다. */
+@layer base {
+  /* for button html tag */
+  /* @apply border : apply the styles to the border property */
+  /* border-black : the color of the border */
+  /* rounded-xl : border radius */
+  /* px-5 py-1 : px -> padding left & right(5px) / py -> padding top & down(1px)  */
+  button {
+    @apply border border-black rounded-xl px-5 py-1
+  }
 }
