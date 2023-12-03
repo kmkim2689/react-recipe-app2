@@ -153,6 +153,8 @@ export default TopNav
 
     * max-w-[1520px] : max width is 1520px
         * **[] is the way to specify a custom value**
+        * 직접 단위를 설정하여 사용할 것임을 의미(px, % 등)
+        * square bracket 없이 숫자를 사용한다면, tailwind에서 설정한 대로 활용하겠다는 의미이다. 예를 들어 padding의 경우 1당 0.25rem을 의미
     * mx-0 : margin from left to right is auto => 좌우 auto는 좌우 중앙에 정렬함을 의미한다.
     * flex : set display to flex
     * justify-between : justify-content is space-between
@@ -227,6 +229,8 @@ export default TopNav
         </div>
     </div>
     ```
+
+#### Center
 
 
 ### 1.2. Featured.js

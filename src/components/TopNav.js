@@ -29,6 +29,14 @@ function TopNav() {
                 </p>
             </div>
         </div>
+
+        {/* for the search bar(center) */}
+        <div className='bg-gray-200 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]'>
+            <AiOutlineSearch size={25} />
+            {/* https://webdir.tistory.com/342 */}
+            <input className='bg-transparent p-2 w-full focus:outline-none' type='text' placeholder='Search Meals' />
+        </div>
+
     </div>
   )
 }
