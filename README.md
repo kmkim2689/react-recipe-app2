@@ -231,6 +231,122 @@ export default TopNav
     ```
 
 #### Center
+```
+<div className='bg-gray-200 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]'>
+    <AiOutlineSearch size={25} />
+    {/* https://webdir.tistory.com/342 */}
+    <input className='bg-transparent p-2 w-full focus:outline-none' type='text' placeholder='Search Meals' />
+</div>
+```
+
+#### Right side
+* Button for cart
+* use <button>
+* styles
+    * background : orange, density is 700
+    * text : white
+    * with smaller device, it should be hidden
+    * for medium and larger device, display should be flex
+    * align-items : center
+    * top-bottom padding : 2
+    * shape should be rounded(circle rectangular shape)
+    * set an icon into the button
+    ```
+    import { BsFillCartFill, BsPerson } from 'react-icons/bs';
+    ```
+        * size should be 20
+
+```
+{/* for the Cart button(right) */}
+<button className='bg-orange-700 text-white sm:hidden md: flex lg:flex items-center py-2 rounded-full'>
+    <BsFillCartFill size={20}/>Cart
+</button>
+```
+
+#### Implement the Side Drawer
+* open up the side menu
+
+* variables needed
+    * sideNav (boolean) state variable : to define whether the drawer is open or not => initial state should be false
+    `const [sideNav, setSideNav] = React.useState(false);`
+
+* on icon click, the sideNav Variable should be reversed
+    ```
+    <div className='cursor-pointer' onClick={() => setSideNav(!sideNav)}> 
+    ```
+
+* set the background for overlay(menu list layout)
+    * https://velog.io/@iamhayoung/CSS-Position-Display-Float%EC%97%90-%EB%8C%80%ED%95%B4-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0#2%EF%B8%8F%E2%83%A3-display-%EC%86%8D%EC%84%B1
+    * <div>
+    * style
+        * background should be black, alpha should be 60%(alpha : use slash /) => 메뉴가 보이게 되어도 메인 화면이 보여야 하기 때문에 투명도를 설정
+        * position should be fixed(fixed: 브라우저의 전체 화면(viewport)을 기준으로 HTML 요소를 배치. 고정 배치가 적용된 요소는 부모 요소로 부터 완전히 독립되어 다른 요소에 구애받지 않고 화면에 어디든지 원하는 위치에 배치될 수 있습니다. 또한, 고정 배치가 적용된 요소는 다른 요소들이 스크롤링(scrolling)되는 동안에도 지정된 자리에 고정되어 움직이지 않는 특징을 가지고 있습니다. => 스크롤을 해도 항상 같은 위치에 고정)
+        * height should be the size of the screen : 높이는 스크린의 사이즈만큼으로 한다. => h-screen
+        * z-10 : 10보다 작은 것 보다는 위에 나오고, 10보다 큰 것보다는 아래에 깔려 나온다.
+        * top-0, left-0 : fixed position을 활용하므로 활용할 수 있는 속성으로, 위와 왼쪽에 딱 붙어 메뉴가 표시되어야 하므로 설정
+        ```
+        <div className='bg-black/60 fixed w-full h-screen z-10 top-0 left-0'>
+        </div>
+        ```
+
+    * if sideNav is true, the layout background should be transparent black, otherwise not
+        * 삼항연산자(? :) 활용
+        ```
+        {sideNav ? <div className='bg-black/60 fixed w-full h-screen z-10 top-0 left-0'>
+        </div> : ("")}
+        ```
+
+    * create the sideNav layout
+        * white colored menu
+        * style
+            * if sideNav is false, it should go away to the opposite direction it appeared => left should be `-100%(totally gone)` and there needs to be a `duration` for animation(to make it look going away from the screen)
+            ```
+            <div className={sideNav 
+                ? 'fixed top-0 left-0 w-[300px] h-screen bg-white z-10 duration-300' 
+                : 'fixed top-0 left-[-100%] w-[300px] h-screen bg-white z-10 duration-300'
+            }></div>
+            ```
+
+    * set the menu items => <nav> + <ul> + <li>
+        * icons needed
+            * `AiOutlineClose`
+                * should be set on the top right of the corner
+                * should be clickable(to set the sideNav state variable false)
+                * position should be absolute => to set the top and the right(부모 기준으로 위와 오른쪽으로부터 어느정도만큼 떨어뜨릴 것인지 설정)
+                * margin right : mr
+                * icon should be rounded : rounded-full
+        ```
+        <nav>
+            <ul className='flex flex-col p-4 text-gray-900'>
+                <li className='text-xl py-4 flex'>
+                    <BsPerson size={25} className='mr-4 text-white bg-black rounded-full' />
+                    My Account
+                </li>
+                <li className='text-xl py-4 flex'>
+                    <TbTruckReturn size={25} className='mr-4 text-white bg-black rounded-full' />
+                    Delivery
+                </li>
+                <li className='text-xl py-4 flex'>
+                    <MdOutlineFavorite size={25} className='mr-4 text-white bg-black rounded-full' />
+                    My Favorite
+                </li>
+                <li className='text-xl py-4 flex'>
+                    <FaGoogleWallet size={25} className='mr-4 text-white bg-black rounded-full' />
+                    My Wallet
+                </li>
+                <li className='text-xl py-4 flex'>
+                    <FaUserFriends size={25} className='mr-4 text-white bg-black rounded-full' />
+                    Help
+                </li>
+            </ul>
+        </nav>
+        ```
+
+    
+
+
+
+
 
 
 ### 1.2. Featured.js
