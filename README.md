@@ -342,16 +342,24 @@ export default TopNav
         </nav>
         ```
 
-    
+* when the area outside the menu layout is clicked, the drawer should be closed
+    * set the overlay on click => on click, reverse the sideNav state variable
 
-
-
-
-
+    ```
+    // set "onClick"
+    {sideNav ? <div className='bg-black/60 fixed w-full h-screen z-10 top-0 left-0' onClick={() => setSideNav(!sideNav)}>
+    </div> : ("")}
+    ```
 
 ### 1.2. Featured.js
 * Hero Component / Featured Item Component => like a banner
     > A hero is a large banner or image that appears as one of the first items on a page.
+
+* sliders : an array of objects for imageUrls
+
+* currentIndex : current banner index => set it with state variable
+`const [currentIndex, setcurrentIndex] = useState(0);`
+
 ### 1.3. Delivery.js
 ### 1.4. TopPicks.js
 ### 1.5. Meal.js

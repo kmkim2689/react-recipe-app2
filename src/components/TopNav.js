@@ -25,7 +25,7 @@ function TopNav() {
             {/* font-size: 1.5rem (24px) line-height: 2rem (32px) */}
             {/* for smaller screen, font size will be 3xl. for larger screen, font size will be 4xl */}
             <h1 className='text-2xl sm:text-3xl lg:text-4xl px-2'>
-                Yum<span>Eats</span>
+                Yum<span className='font-bold'>Eats</span>
             </h1>
             {/* for badges */}
             {/* for smaller screens that will be hidden, for larger screen display will be flex, align-items to center, background color is  rgb(229 231 235 / var(--tw-bg-opacity), almost circle rounded, padding for all aspects is 0.25rem, fontsize is 14px*/}
@@ -53,7 +53,7 @@ function TopNav() {
         </button>
 
         {/* to set the background color of menu whether the menu is open or not */}
-        {sideNav ? <div className='bg-black/60 fixed w-full h-screen z-10 top-0 left-0'>
+        {sideNav ? <div className='bg-black/60 fixed w-full h-screen z-10 top-0 left-0' onClick={() => setSideNav(!sideNav)}>
         </div> : ("")}
         
         {/* for the menu layout => open or not */}
