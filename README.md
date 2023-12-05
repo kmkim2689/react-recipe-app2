@@ -360,6 +360,15 @@ export default TopNav
 * currentIndex : current banner index => set it with state variable
 `const [currentIndex, setcurrentIndex] = useState(0);`
 
+* views
+    * div : for the overall area of the banner. maxwidth is 1520px, height is 500px(fixed) width should be full, padding(top, bottom, start, end) is 1rem, position to be relative
+        * div : for the image area => set the image with imageurl using style(background image)
+            * bg-center : background position is center
+            * bg-cover : background size is cover(fill the container completely => fit in the container)
+            * duration-500 : page animation
+        * left, right arrows for altering the index
+        * bullet to move to any index(indicator) : below the slide
+
 ### 1.3. Delivery.js
 ### 1.4. TopPicks.js
 ### 1.5. Meal.js
