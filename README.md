@@ -388,6 +388,17 @@ export default TopNav
 
 
 ### 1.4. TopPicks.js
+* implement slider
+
+* return the fragment(<></>)
+* inside the fragment
+    * <h1> : Top Picks
+    * slider : use splidejs
+        ```
+        import { Splide, SplideSlide } from '@splidejs/react-splide';
+        import '@splidejs/react-splide/css';
+        ```
+
 ### 1.5. Meal.js
 ### 1.6. Categories.js
 ### 1.7. NewsLetter.js
