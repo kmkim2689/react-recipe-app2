@@ -370,6 +370,23 @@ export default TopNav
         * bullet to move to any index(indicator) : below the slide
 
 ### 1.3. Delivery.js
+* headline
+    * style
+        * text color is orange, density is 500
+        * font should be bold
+        * text size is 1.5rem, lineheight is 2rem
+        * text align should be center
+        ```
+        <h3 className='text-orange-500 font-bold text-2xl text-center'>Quick Delivery App</h3>
+        ```
+
+* grid list
+    * style
+        * width should be 1520px
+        * margin-left & right should be auto(to align the grid list to center)
+        * when medium size device, the # of columns should be 2
+
+
 ### 1.4. TopPicks.js
 ### 1.5. Meal.js
 ### 1.6. Categories.js

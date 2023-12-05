@@ -40,8 +40,6 @@ function Featured() {
         setcurrentIndex(index);
     }
 
-    setTimeout(toNextSlide, 5000);
-
   return (
     // why it is relative? => to make the image absolute
     <div className='max-w-[1520px] h-[400px] w-full py-4 px-4 relative group'>
