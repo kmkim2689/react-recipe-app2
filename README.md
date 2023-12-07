@@ -392,12 +392,96 @@ export default TopNav
 
 * return the fragment(<></>)
 * inside the fragment
-    * <h1> : Top Picks
-    * slider : use splidejs
-        ```
-        import { Splide, SplideSlide } from '@splidejs/react-splide';
-        import '@splidejs/react-splide/css';
-        ```
+    ```
+    function TopPicks() {
+        return (
+            <>
+            <h1 className='text-orange-500 font-bold text-2xl text-center py-2'>Top Picks</h1>
+            {/* slide should be hidden for small devices */}
+            <div className='hidden lg:flex max-w-[1520px] m-auto py-2 px-2'>
+            {/* use the splide */}
+            {
+                // item : represents each item in the topPicks array
+                topPicks.map((item) => {
+                return (
+                    // position relative to allow absolute positioning of the title
+                    <div key={item.id} className='rounded-3xl relative'>
+                    {/* parent div position is relative -> inner div position to be absolute : to place on the top of the parent div */}
+                    <div className='absolute w-full h-full bg-black/50 rounded-3xl text-white'>
+                        {/* title :  */}
+                        <p className='px-2'>{item.title}</p>
+                    </div>
+                    <img src={item.img}></img>
+                    </div>
+                );
+                })
+            }
+            </div>
+            </>
+        )
+    }
+
+    ```
+    * 이 상태에서는 요리들이 제대로 표출되지 못하고 있다. 아이템의 너비가 이미지의 본래 너비만큼만 나오기 때문에 제각각으로 나오며 이미지가 rounded된 아이템 컨테이너를 벗어나서 표추되는 모습을 보인다.
+
+    * 해결 방안 : stylize
+        * img에 스타일 설정
+            * height를 200px로 설정하여, 모두 동일한 높이를 가지도록 한다
+            * width를 full로 설정하여, 아이템 영역의 너비를 모두 채우도록 한다.
+            * object-fit를 cover로 하여 이미지의 본래 비율을 지켜 표출되도록 한다. 대신 잘리는 부분이 발생
+            * border-radius를 컨테이너와 동일하게 설정함으로써, 이미지가 컨테이너로부터 빠져나오지 않도록 한다.(3xl)
+    * 아이템 컨테이너에 대한 추가 조치
+        * hover 이벤트 발생 시 크기를 1.05배 키움
+        * 애니메이션은 easeout
+        * 300ms동안 지속되도록 한다
+
+* Wrap the "mapped list" with <Splide>
+    * <Splide> component
+    * wrap it with the list(map)
+    * set up the options
+        * 한 번에 보이는 아이템의 개수는 4개 => perPage
+        * 아이템 간 간격 => gap
+        * 스크롤을 자유자재로(아이템 단위가 아닌 사용자가 원하는 만큼 드래그 하는 만큼만 드래그되도록) => drag: free
+        * splide에서 기본적으로 제공되는 좌우 화살표 제거 => arrows: false
+
+* Wrap each item with <SplideSlide>
+
+```
+function TopPicks() {
+  return (
+    <>
+    <h1 className='text-orange-500 font-bold text-2xl text-center py-2'>Top Picks</h1>
+    {/* slide should be hidden for small devices */}
+    <div className='hidden lg:flex max-w-[1520px] m-auto py-2 px-2'>
+      {/* use the splide */}
+      <Splide options={{perPage: 4, gap: "0.5rem", drag: 'free', arrows: false}}>
+      {
+        // item : represents each item in the topPicks array
+        topPicks.map((item) => {
+          return (
+            <SplideSlide key={item.id}>
+              {/* position relative to allow absolute positioning of the title */}
+            <div className='rounded-3xl relative'>
+              {/* parent div position is relative -> inner div position to be absolute : to place on the top of the parent div */}
+              <div className='absolute w-full h-full bg-black/50 rounded-3xl text-white'>
+                {/* title :  */}
+                <p className='px-2'>{item.title}</p>
+                <button className='border-dotted border-white text-white mx-2 absolute bottom-4'>Add To Cart</button>
+              </div>
+              <img className='h-[200px] w-full object-cover rounded-3xl hover:scale-105 ease-out duration-300' src={item.img}></img>
+            </div>
+            </SplideSlide>
+            
+          );
+        })
+      }
+      </Splide>
+      
+    </div>
+    </>
+  )
+}
+```
 
 ### 1.5. Meal.js
 ### 1.6. Categories.js
