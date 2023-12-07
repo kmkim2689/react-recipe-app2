@@ -484,6 +484,14 @@ function TopPicks() {
 ```
 
 ### 1.5. Meal.js
+
+* display the items with grid column
+    * display : grid
+        * medium screen size : 2 columns per row
+        * smaller screen size : 1 column per row
+        * larger screen size : 6 column per row
+    * use mealData in data.js => map
+
 ### 1.6. Categories.js
 ### 1.7. NewsLetter.js
 ### 1.8. Footer.js
