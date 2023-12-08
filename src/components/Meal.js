@@ -37,7 +37,7 @@ function Meal() {
             {
                 meals.map((item) => {
                     return (
-                        <div className='border-none hover: scale-105 duration-300' key={item.id}>
+                        <div className='border-none hover: scale-105 duration-300 cursor-pointer' key={item.id}>
                             {/* height of the image to be equal -> hardcode the height */}
                             <img className='w-full h-[200px] object-cover rounded-lg' src={item.image} alt={item.name} />
                             {/* info of the item - text */}

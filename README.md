@@ -539,9 +539,45 @@ function TopPicks() {
             }
             ```
 
-
+            * set onClick on each button
+            ```
+            {/* buttons */}
+            <button onClick={() => setMeals(mealData)} className='m-1 border-orange-700 text-white bg-orange-700 hover:bg-white hover:text-orange-700 hover:border-orange-700'>All</button>
+            <button onClick={() => filterCategory("pizza")} className='m-1 border-orange-700 text-white bg-orange-700 hover:bg-white hover:text-orange-700 hover:border-orange-700'>Pizza</button>
+            <button onClick={() => filterCategory("chicken")} className='m-1 border-orange-700 text-white bg-orange-700 hover:bg-white hover:text-orange-700 hover:border-orange-700'>Chicken</button>
+            <button onClick={() => filterCategory("salad")} className='m-1 border-orange-700 text-white bg-orange-700 hover:bg-white hover:text-orange-700 hover:border-orange-700'>Salad</button>
+            ```
 
 ### 1.6. Categories.js
+
+* top categories
+* map through the categories and have them displayed on the screen
+
+```
+function Categories() {
+    
+  return (
+    <div className='max-w-[1520px] m-auto px-4 py-12'>
+        <h1 className='text-orange-500 font-bold text-2xl text-center py-2'>Trending Categories</h1>
+
+        <div className='grid grid-cols-2 md:grid-cols-6 gap-5 py-5 px-2'>
+            {
+                categories.map((item) => {
+                    return (
+                        <div className='p-4 flex justify-center items-center hover:scale-105 duration-300' key={item.id}>
+                            <img className='w-40 h-10 object-cover rounded-xl cursor-pointer shadow-xl' src={item.image} alt={item.name} />
+                        </div>
+                    )
+                })
+            }
+        </div>
+    </div>
+  )
+}
+```
+
 ### 1.7. NewsLetter.js
+
+
 ### 1.8. Footer.js
 
