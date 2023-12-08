@@ -1,8 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { mealData } from '../data'
 import { ArrowSmRightIcon } from '@heroicons/react/outline'
 
 function Meal() {
+
+    // state variable for meal data
+    const [meals, setMeals] = useState(mealData);
+
+    // filter items by category
+    const filterCategory = (category) => {
+        setMeals(
+            mealData.filter((item) => {
+                return item.category === category
+            })
+        )
+    }
+
   return (
     <div className='max-w-[1520px] m-auto px-4 py-6'>
         <h1 className='text-orange-500 font-bold text-2xl text-center py-6'>Our Meals</h1>
@@ -11,10 +24,10 @@ function Meal() {
         <div className='flex flex-col lg:flex-row justify-center mb-6'>
             <div className='flex justify-center md:justify-center'>
                 {/* buttons */}
-                <button className='m-1 border-orange-700 text-white bg-orange-700 hover:bg-white hover:text-orange-700 hover:border-orange-700'>All</button>
-                <button className='m-1 border-orange-700 text-white bg-orange-700 hover:bg-white hover:text-orange-700 hover:border-orange-700'>Pizza</button>
-                <button className='m-1 border-orange-700 text-white bg-orange-700 hover:bg-white hover:text-orange-700 hover:border-orange-700'>Chicken</button>
-                <button className='m-1 border-orange-700 text-white bg-orange-700 hover:bg-white hover:text-orange-700 hover:border-orange-700'>Salad</button>
+                <button onClick={() => setMeals(mealData)} className='m-1 border-orange-700 text-white bg-orange-700 hover:bg-white hover:text-orange-700 hover:border-orange-700'>All</button>
+                <button onClick={() => filterCategory("pizza")} className='m-1 border-orange-700 text-white bg-orange-700 hover:bg-white hover:text-orange-700 hover:border-orange-700'>Pizza</button>
+                <button onClick={() => filterCategory("chicken")} className='m-1 border-orange-700 text-white bg-orange-700 hover:bg-white hover:text-orange-700 hover:border-orange-700'>Chicken</button>
+                <button onClick={() => filterCategory("salad")} className='m-1 border-orange-700 text-white bg-orange-700 hover:bg-white hover:text-orange-700 hover:border-orange-700'>Salad</button>
             </div>
         </div>
 
@@ -22,7 +35,7 @@ function Meal() {
         {/* gap : '자식' 요소들 간 거리를 설정하는 것임 */}
         <div className='grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-4 gap-6'>
             {
-                mealData.map((item) => {
+                meals.map((item) => {
                     return (
                         <div className='border-none hover: scale-105 duration-300' key={item.id}>
                             {/* height of the image to be equal -> hardcode the height */}

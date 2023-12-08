@@ -522,7 +522,23 @@ function TopPicks() {
         </div>
         ```
 
-        * 
+        * filtering action : useState hook
+            * 초기에는 전체 item을 표출하다가, filter될 때 setState 함수를 활용해 변경
+
+            ```const [meals, setMeals] = useState(mealData);```
+
+            * filtering function
+            ```
+            // filter items by category
+            const filterCategory = (category) => {
+                setMeals(
+                    mealData.filter((item) => {
+                        return item.category === category
+                    })
+                )
+            }
+            ```
+
 
 
 ### 1.6. Categories.js
