@@ -17,6 +17,7 @@ function Footer() {
                 </div>
 
             </div>
+            {/* 상위 div의 col 개수가 3인데, 3중에 해당 div 태그가 2만큼 차지하기를 원함 => col-span-2(바로 위의 div 태그 대비 2배의 너비를 가지게 된다.) */}
             <div className='lg:col-span-2 flex justify-between mt-6'>
                 <div>
                     <h6 className='fonts-medium text-[#9b9b9b]'>Location</h6>
