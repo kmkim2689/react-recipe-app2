@@ -575,9 +575,3 @@ function Categories() {
   )
 }
 ```
-
-### 1.7. NewsLetter.js
-
-
-### 1.8. Footer.js
-
