@@ -491,6 +491,39 @@ function TopPicks() {
         * smaller screen size : 1 column per row
         * larger screen size : 6 column per row
     * use mealData in data.js => map
+    * the info of the meal
+        * margin-top : mt
+            * 본래 margin-top은 부모 요소의 맨 위로부터 아래로 떨어진 정도를 나타낸다. 다만, 음수로 설정한다면 맨 위로부터 위로 떨어진 정도를 나타낸다
+            * -mt-10 : 부모 요소의 맨 위를 뚫고 10만큼 나온다는 의미
+    * button for heading to detail page
+        * heroicons import하기
+
+        ```npm install @heroicons/react```
+        ```import { ArrowSmRightIcon } from '@heroicons/react/outline```
+
+        * 문제점 : icon이 import되지 않음
+            * 해결책 : 라이브러리 downgrade하기
+            * package.json 파일에서 heroicons 관련 dependency 삭제
+            * 그 후, 1.x 버전을 다시 설치
+            ```npm i @heroicons/react@1.0.6```
+
+    * button for showing meal items by category
+        * styling
+        ```
+        {/* buttons for showing items by category */}
+        <div className='flex flex-col lg:flex-row justify-center mb-6'>
+            <div className='flex justify-center md:justify-center'>
+                {/* buttons */}
+                <button className='m-1 border-orange-700 text-white bg-orange-700 hover:bg-white hover:text-orange-700 hover:border-orange-700'>All</button>
+                <button className='m-1 border-orange-700 text-white bg-orange-700 hover:bg-white hover:text-orange-700 hover:border-orange-700'>Pizza</button>
+                <button className='m-1 border-orange-700 text-white bg-orange-700 hover:bg-white hover:text-orange-700 hover:border-orange-700'>Chicken</button>
+                <button className='m-1 border-orange-700 text-white bg-orange-700 hover:bg-white hover:text-orange-700 hover:border-orange-700'>Salad</button>
+            </div>
+        </div>
+        ```
+
+        * 
+
 
 ### 1.6. Categories.js
 ### 1.7. NewsLetter.js
